@@ -26,6 +26,9 @@ import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 
 @WebMvcTest(BeerController.class)
 class BeerControllerTest {
+	public static final String BEER_1_UPC = "0631234200036";
+    public static final String BEER_2_UPC = "0631234300019";
+    public static final String BEER_3_UPC = "0083783375213";
 
 	@Autowired
 	MockMvc mockMvc;
@@ -48,7 +51,7 @@ class BeerControllerTest {
 
 	@Test
 	void testSaveNewBeer() throws Exception {
-		BeerDto beerDto = BeerDto.builder().beerName("Aqua").price(new BigDecimal(100)).upc(102345l).beerStyle(BeerStyleEnum.ALE).build();
+		BeerDto beerDto = BeerDto.builder().beerName("Aqua").price(new BigDecimal(100)).upc(BEER_1_UPC).beerStyle(BeerStyleEnum.ALE).build();
 		String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 		mockMvc.perform(post("/api/v1/beer/")
 				.contentType(MediaType.APPLICATION_JSON)

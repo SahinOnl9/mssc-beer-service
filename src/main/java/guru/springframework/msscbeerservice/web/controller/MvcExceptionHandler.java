@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class MvcExceptionHandler {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<Map<String, String>> handleValidationException(MethodArgumentNotValidException manv){
+	public ResponseEntity<Map<String, String>> handleValidationException(MethodArgumentNotValidException manve){
 		Map<String, String> errors = new HashMap<>();
-		manv.getBindingResult().getAllErrors().forEach(error -> {
+		manve.getBindingResult().getAllErrors().forEach(error -> {
 			String fieldName = ((FieldError)error).getField();
 			String errorMsg = error.getDefaultMessage();
 			errors.put(fieldName, errorMsg);

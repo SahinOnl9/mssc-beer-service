@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import guru.springframework.msscbeerservice.domain.Beer;
@@ -17,7 +18,8 @@ import lombok.RequiredArgsConstructor;
 public class BeerServiceImpl implements BeerService {
 	
 	private final BeerRepository beerRepository;
-	private final BeerMapper beerMapper;
+	@Autowired
+	private BeerMapper beerMapper;
 
 	@Override
 	public BeerDto getById(UUID beerId) {
